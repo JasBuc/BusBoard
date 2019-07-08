@@ -9,7 +9,9 @@ exports.getStops = function(stops) {
     const stopsData = JSON.parse(stops);
     const stopsArray = [];
     for (stop of stopsData.stopPoints){
-        stopsArray.push(new Stop(stop.children[0].id,stop.distance));
+        if (stop.children.length != 0){
+            stopsArray.push(new Stop(stop.children[0].id,stop.distance));
+        }
     }
     return stopsArray;
 }
